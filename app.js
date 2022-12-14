@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 var dotenv = require("dotenv");
-const cors = require('cors');
+var cors = require('cors');
 
 
 require("dotenv").config();
@@ -14,12 +14,14 @@ var indexRouter = require('./routes/index');
 var mailsRouter = require('./routes/mails');
 var shippingFulfillmentsRouter = require('./routes/shippingFulfillments');
 var tradeFinancesRouter = require('./routes/tradeFinances');
+var corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 var app = express();
 
-app.use(cors({
-    origin: 'http://localhost:3000/'
-}));
+app.use(cors(corsOptions));
 app.use(express.static('public'));
 
 // view engine setup
