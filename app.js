@@ -18,7 +18,7 @@ var tradeFinancesRouter = require('./routes/tradeFinances');
 var app = express();
 
 var corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'https://localhost:3000',
     optionsSuccessStatus: 200 // For legacy browser support
     methods: "GET, PUT"
 }
