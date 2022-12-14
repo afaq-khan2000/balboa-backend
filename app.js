@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 var dotenv = require("dotenv");
-// var cors = require('cors');
+var cors = require('cors');
 
 
 require("dotenv").config();
@@ -17,7 +17,7 @@ var tradeFinancesRouter = require('./routes/tradeFinances');
 
 var app = express();
 
-// app.use(cors({origin: "http://localhost:3000",}));
+app.use(cors({origin: "http://localhost:3000",}));
 app.use(express.static('public'));
 
 // view engine setup
