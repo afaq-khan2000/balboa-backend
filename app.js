@@ -6,6 +6,11 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 var dotenv = require("dotenv");
 var cors = require('cors');
+var corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200 // For legacy browser support
+    methods: "GET, PUT"
+}
 
 
 require("dotenv").config();
@@ -16,12 +21,6 @@ var shippingFulfillmentsRouter = require('./routes/shippingFulfillments');
 var tradeFinancesRouter = require('./routes/tradeFinances');
 
 var app = express();
-
-var corsOptions = {
-    origin: 'https://localhost:3000',
-    optionsSuccessStatus: 200 // For legacy browser support
-    methods: "GET, PUT"
-}
 
 app.use(cors(corsOptions));
 app.use(express.static('public'));
