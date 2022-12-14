@@ -21,7 +21,7 @@ var corsOptions = {
 
 var app = express();
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.static('public'));
 
 // view engine setup
@@ -35,9 +35,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/mails', mailsRouter);
-app.use('/shipping-fulfillments', shippingFulfillmentsRouter);
-app.use('/trade-finance', tradeFinancesRouter);
+app.use('/mails', cors(corsOptions),mailsRouter);
+app.use('/shipping-fulfillments',cors(corsOptions), shippingFulfillmentsRouter);
+app.use('/trade-finance', cors(corsOptions),tradeFinancesRouter);
 
 // MongoDb Connection
 mongoose
