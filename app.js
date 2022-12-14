@@ -14,14 +14,10 @@ var indexRouter = require('./routes/index');
 var mailsRouter = require('./routes/mails');
 var shippingFulfillmentsRouter = require('./routes/shippingFulfillments');
 var tradeFinancesRouter = require('./routes/tradeFinances');
-var corsOptions = {
-  origin: 'http://localhost:3000',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
 
 var app = express();
 
-// app.use(cors(corsOptions));
+app.use(cors({origin: "http://localhost:3000",}));
 app.use(express.static('public'));
 
 // view engine setup
@@ -35,9 +31,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/mails', cors(corsOptions),mailsRouter);
-app.use('/shipping-fulfillments',cors(corsOptions), shippingFulfillmentsRouter);
-app.use('/trade-finance', cors(corsOptions),tradeFinancesRouter);
+app.use('/mails',mailsRouter);
+app.use('/shipping-fulfillments', shippingFulfillmentsRouter);
+app.use('/trade-finance',tradeFinancesRouter);
 
 // MongoDb Connection
 mongoose
