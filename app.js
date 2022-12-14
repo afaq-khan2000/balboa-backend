@@ -20,7 +20,7 @@ var app = express();
 var corsOptions = {
     origin: 'http://localhost:3000',
     optionsSuccessStatus: 200 // For legacy browser support
-    methods: "GET, PUT"
+    methods: "PUT"
 }
 
 app.use(cors(corsOptions));
